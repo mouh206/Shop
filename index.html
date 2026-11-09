@@ -17,27 +17,27 @@ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:en
 :root[data-theme="dark"]{--bg:#141B16;--card:#1D2720;--ink:#E7EFE8;--mut:#9BAA9F;--acc:#7FCB96;--accbg:#27402F;--bad:#F08A7E;--badbg:#412622;--line:#2C3A30;color-scheme:dark}
 *{box-sizing:border-box}
 html,body{margin:0}
-body{background:var(--bg);color:var(--ink);font-family:'Cairo',Tahoma,Arial,sans-serif;padding:14px 14px 84px;max-width:640px;margin:0 auto;line-height:1.6}
+body{background:var(--bg);color:var(--ink);font-family:'Cairo',Tahoma,Arial,sans-serif;padding:14px 14px 84px;max-width:1100px;margin:0 auto;line-height:1.6;font-size:16px}
 h1{font-size:22px;font-weight:800;margin:4px 0 2px}
 h2{font-size:16px;font-weight:800;margin:18px 0 8px}
 .sub{color:var(--mut);font-size:13px;margin:0 0 12px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.big{font-size:21px;font-weight:800}
-.lbl{font-size:12px;color:var(--mut)}
+.big{font-size:24px;font-weight:800}
+.lbl{font-size:14px;color:var(--mut)}
 .good{color:var(--acc)}.bad{color:var(--bad)}
-.tag{display:inline-block;font-size:12px;font-weight:600;padding:1px 8px;border-radius:99px;background:var(--accbg);color:var(--acc)}
+.tag{display:inline-block;font-size:14px;font-weight:600;padding:1px 8px;border-radius:99px;background:var(--accbg);color:var(--acc)}
 .tag.bad{background:var(--badbg);color:var(--bad)}
-input,select,textarea{width:100%;font:inherit;font-size:15px;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);margin-bottom:8px}
+input,select,textarea{width:100%;font:inherit;font-size:17px;padding:13px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);margin-bottom:8px}
 .row{display:flex;gap:8px}.row>*{flex:1;min-width:0}
-button{font:inherit;font-weight:600;font-size:14px;border:0;border-radius:8px;padding:9px 12px;background:var(--acc);color:var(--card);cursor:pointer}
+button{font:inherit;font-weight:600;font-size:16px;border:0;border-radius:10px;padding:12px 16px;background:var(--acc);color:var(--card);cursor:pointer}
 button.sec{background:var(--accbg);color:var(--acc)}
 button.dng{background:var(--badbg);color:var(--bad)}
-button.sm{padding:5px 10px;font-size:13px}
+button.sm{padding:9px 14px;font-size:15px}
 .acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;align-items:center}
 .top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
 nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
-nav button{flex:1;background:none;color:var(--mut);border-radius:0;padding:12px 4px;font-size:14px}
+nav button{flex:1;background:none;color:var(--mut);border-radius:0;padding:14px 4px;font-size:15px}
 nav button.on{color:var(--acc);box-shadow:inset 0 3px 0 var(--acc)}
 .chips{display:flex;gap:6px;overflow-x:auto;margin-bottom:10px;padding-bottom:2px}
 .chips button{white-space:nowrap}
@@ -51,12 +51,24 @@ nav button.on{color:var(--acc);box-shadow:inset 0 3px 0 var(--acc)}
 .lb span{font-size:9pt;font-weight:600;line-height:1.2}
 .lb strong{font-size:13pt;font-weight:800}
 .lb svg{max-width:100%;height:10mm}
+.pgrid{display:grid;grid-template-columns:1fr;gap:12px}.pgrid .card{margin:0}
+@media(min-width:700px){.pgrid{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.pgrid{grid-template-columns:1fr 1fr 1fr}}
+@media(min-width:900px){.grid{grid-template-columns:repeat(4,1fr)}#list>.card{max-width:900px}}
+#main>.card{max-width:760px}
+.pimg{width:96px;height:96px;border-radius:12px;object-fit:cover;background:var(--accbg);flex:none}
+.pnone{display:flex;align-items:center;justify-content:center;font-size:36px}
+.prow{display:flex;gap:14px;align-items:flex-start}
+.pcol{flex:1;min-width:0}
+.pgrid .prow{flex-direction:column;gap:12px}.pgrid .pimg{width:100%;height:auto;aspect-ratio:4/3;border-radius:12px;cursor:zoom-in}.pgrid .pnone{font-size:56px;cursor:default}
+label.bl{display:inline-block;font-weight:600;font-size:16px;border-radius:10px;padding:12px 16px;background:var(--acc);color:var(--card);cursor:pointer}label.bl.sec{background:var(--accbg);color:var(--acc)}
 @media print{body *{visibility:hidden}#plist,#plist *{visibility:visible}#plist{position:absolute;top:0;right:0}.lb{border:1px solid #000;break-inside:avoid}}
 </style>
 </head>
 <body>
 <h1 id="ttl">إدارة المحل</h1>
 <p class="sub" id="sub"></p>
+<div class="lbl" id="sync" style="margin:-6px 0 8px"></div>
 <div id="msg"></div>
 <div id="main"></div>
 <nav id="nav"></nav>
@@ -66,7 +78,7 @@ nav button.on{color:var(--acc);box-shadow:inset 0 3px 0 var(--acc)}
 const K='shop_v1';
 let S={shop:'محل النباتات',p:[],s:[],d:[]};
 try{const r=localStorage.getItem(K);if(r)S=Object.assign(S,JSON.parse(r))}catch(e){}
-const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){if(!CL)msg('تعذّر الحفظ في هذا المتصفح (مساحة ممتلئة أو التخزين ممنوع). افتح الرابط في Chrome أو احذف بعض الصور.')}clearTimeout(pt);pt=setTimeout(push,400)};
 const $=s=>document.querySelector(s);
 const v=id=>$('#'+id).value.trim();
 const esc=t=>String(t==null?'':t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -82,7 +94,7 @@ const pf=(b,s,q)=>(s-b)*q;
 const profTag=(b,s)=>{const d=s-b;return `<span class="tag ${d<0?'bad':''}">${d<0?'خسارة':'ربح'} ${n(Math.abs(d))} د.ج</span>`};
 
 function go(t){if(t!=='sale')stopScan();tab=t;arm=null;editId=null;msg();render()}
-function render(){
+function render(){tmpImg=null;
   $('#ttl').textContent=S.shop;
   const names={lab:'طباعة ملصقات الأسعار',home:'نظرة عامة على المحل',stock:'المنتجات والأسعار',sale:'تسجيل عملية بيع',ship:'طلبات التوصيل'};
   $('#sub').textContent=names[tab];
@@ -98,6 +110,7 @@ const forms={
 home:()=>'',
 lab:()=>'',
 stock:()=>{const e=S.p.find(x=>x.id===editId)||{};return `<div class="card"><b>${editId?'تعديل المنتج':'إضافة منتج'}</b><div style="height:8px"></div>
+<div class="prow" style="margin-bottom:10px"><div id="pprev">${e.img?`<img class="pimg" src="${e.img}">`:'<div class="pimg pnone">📷</div>'}</div><div class="pcol"><div class="lbl">صورة المنتج (اختياري): التقط صورة أو اخترها من المعرض</div><div class="acts" style="margin:0 0 6px"><label class="bl">📷 التقاط صورة<input type="file" accept="image/*" capture="environment" onchange="pickImg(this)" hidden></label><label class="bl sec">🖼️ من المعرض<input id="pimg" type="file" accept="image/*" onchange="pickImg(this)" hidden></label></div><div id="pst" class="lbl"></div></div></div>
 <input id="pn" placeholder="اسم المنتج" value="${esc(e.name)}">
 <div class="row"><input id="pb" type="number" inputmode="decimal" placeholder="سعر الشراء" value="${e.buy==null?'':e.buy}"><input id="ps" type="number" inputmode="decimal" placeholder="سعر البيع" value="${e.sell==null?'':e.sell}"></div>
 <input id="pq" type="number" inputmode="numeric" placeholder="الكمية في المخزون" value="${e.qty==null?'':e.qty}">
@@ -134,18 +147,19 @@ home:()=>{
 <h2>الإعدادات</h2><div class="card">
 <div class="lbl">اسم المحل (يظهر على الملصق)</div><input id="shn" value="${esc(S.shop)}" onchange="S.shop=this.value.trim()||'محلي';save();$('#ttl').textContent=S.shop">
 <div class="lbl">نسخة احتياطية: انسخ النص أو الصقه ثم اضغط استرجاع</div>
-<textarea id="bk" rows="3">${esc(JSON.stringify(S))}</textarea>
-<div class="acts"><button class="sec" onclick="restore()">استرجاع من النص</button></div></div>`},
+<textarea id="bk" rows="3">${esc(JSON.stringify(S,(k,x)=>k==='img'?undefined:x))}</textarea><div class="lbl">النسخة الاحتياطية لا تحمل الصور (حتى لا تصير ضخمة).</div>
+<div class="acts"><button class="sec" onclick="restore()">استرجاع من النص</button><button onclick="dlBackup()">حفظ نسخة كملف في الهاتف</button></div>
+<div class="lbl" style="margin-top:10px">استرجاع من ملف نسخة احتياطية</div><input type="file" accept=".json,application/json" onchange="loadFile(this)"></div>`},
 lab:()=>S.p.length?S.p.map(p=>`<div class="card top"><div><b>${esc(p.name)}</b><div class="lbl">${n(p.sell)} د.ج &nbsp; رقم ${p.code}</div></div><button onclick="label('${p.id}')">عمل ملصق</button></div>`).join(''):'<div class="card">لا توجد منتجات بعد. اذهب إلى تبويب المخزون وأضف منتجاً أولاً، ثم ارجع هنا.</div>',
-stock:()=>S.p.length?S.p.map(p=>`<div class="card"><div class="top"><b>${esc(p.name)}</b>${profTag(p.buy,p.sell)}</div>
+stock:()=>S.p.length?'<div class="pgrid">'+S.p.map(p=>`<div class="card"><div class="prow">${p.img?`<img class="pimg" src="${p.img}" onclick="zoomImg('${p.id}')">`:'<div class="pimg pnone">🪴</div>'}<div class="pcol"><div class="top"><b>${esc(p.name)}</b>${profTag(p.buy,p.sell)}</div>
 <div class="lbl">شراء ${n(p.buy)} د.ج &nbsp; بيع ${n(p.sell)} د.ج &nbsp; رقم ${p.code}</div>
 ${p.bd?`<div class="lbl">تاريخ الشراء: ${p.bd}</div>`:''}${(x=>x?`<div class="lbl">آخر بيع: ${x.date}</div>`:'')(S.s.find(s=>s.pid===p.id))}
 <div class="acts"><button class="sec sm" onclick="adj('${p.id}',-1)">−</button><b>${p.qty}</b><button class="sec sm" onclick="adj('${p.id}',1)">+</button>
 <button class="sm" onclick="label('${p.id}')">ملصق</button><button class="sec sm" onclick="editId='${p.id}';render()">تعديل</button>
-<button class="dng sm" onclick="delP('${p.id}')">${arm===p.id?'تأكيد الحذف':'حذف'}</button></div></div>`).join(''):'<p class="sub">لا توجد منتجات بعد.</p>',
-sale:()=>S.s.length?'<h2>آخر المبيعات</h2>'+S.s.slice(0,30).map(s=>`<div class="card"><div class="top"><b>${esc(s.name)} × ${s.qty}</b>${profTag(s.buy,s.sell)}</div>
+<button class="dng sm" onclick="delP('${p.id}')">${arm===p.id?'تأكيد الحذف':'حذف'}</button></div></div></div></div>`).join('')+'</div>':'<p class="sub">لا توجد منتجات بعد.</p>',
+sale:()=>S.s.length?'<h2>آخر المبيعات</h2>'+S.s.slice(0,30).map(s=>`<div class="card"><div class="top"><b>${esc(s.name)} × ${s.qty}</b><span style="display:flex;gap:8px;align-items:center">${profTag(s.buy,s.sell)}<button class="dng sm" aria-label="حذف البيع" onclick="askDelSale('${s.id}')">✕</button></span></div>
 <div class="lbl">${n(s.sell*s.qty)} د.ج &nbsp; تاريخ البيع: ${s.date}${s.time?' — '+s.time:''}</div>
-<div class="acts"><button class="dng sm" onclick="undoSale('${s.id}')">${arm===s.id?'تأكيد الإلغاء':'إلغاء البيع'}</button></div></div>`).join(''):'',
+</div>`).join(''):'',
 ship:()=>{
   const c=k=>k==='all'?S.d.length:S.d.filter(d=>d.st===k).length;
   const ch=`<div class="chips">${['all',...Object.keys(ST)].map(k=>`<button class="${filt===k?'':'sec'} sm" onclick="filt='${k}';fill()">${k==='all'?'الكل':ST[k]} (${c(k)})</button>`).join('')}</div>`;
@@ -162,8 +176,8 @@ ship:()=>{
 function saveP(){
   const name=v('pn'),buy=parseFloat(v('pb')),sell=parseFloat(v('ps')),qty=parseInt(v('pq')||'0');
   if(!name||isNaN(buy)||isNaN(sell)){msg('أدخل الاسم وسعر الشراء وسعر البيع.');return}
-  if(editId){const o=S.p.find(x=>x.id===editId),old=o.qty;Object.assign(o,{name,buy,sell,qty:qty||0});if((qty||0)>old)o.bd=today()}
-  else S.p.unshift({id:uid(),code:nextCode(),name,buy,sell,qty:qty||0,bd:today()});
+  if(editId){const o=S.p.find(x=>x.id===editId),old=o.qty;Object.assign(o,{name,buy,sell,qty:qty||0});if((qty||0)>old)o.bd=today();if(tmpImg)o.img=tmpImg}
+  else S.p.unshift({id:uid(),code:nextCode(),name,buy,sell,qty:qty||0,bd:today(),img:tmpImg||''});
   editId=null;save();msg();render()
 }
 function adj(id,d){const p=S.p.find(x=>x.id===id);p.qty=Math.max(0,p.qty+d);save();fill()}
@@ -199,8 +213,90 @@ function delShip(id){
   S.d=S.d.filter(x=>x.id!==id);arm=null;save();fill()
 }
 function restore(){
-  try{const o=JSON.parse(v('bk'));if(!o||!Array.isArray(o.p))throw 0;S=Object.assign({shop:'محلي',p:[],s:[],d:[]},o);S.p.forEach(p=>{if(!p.code)p.code=nextCode()});save();msg('تم الاسترجاع.');render()}
+  try{const o=JSON.parse(v('bk'));if(!o||!Array.isArray(o.p))throw 0;const oi={};S.p.forEach(p=>{if(p.img)oi[p.id]=p.img});S=Object.assign({shop:'محلي',p:[],s:[],d:[]},o);S.p.forEach(p=>{if(!p.code)p.code=nextCode();if(!p.img&&oi[p.id])p.img=oi[p.id]});save();msg('تم الاسترجاع.');render()}
   catch(e){msg('النص غير صالح.')}
+}
+let tmpImg=null;
+function pickImg(inp){
+  const f=inp.files&&inp.files[0];if(!f)return;
+  const rd=new FileReader();
+  rd.onload=()=>{const im=new Image();
+    im.onload=()=>{const k=Math.min(1,400/Math.max(im.width,im.height)),c=document.createElement('canvas');
+      c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);
+      c.getContext('2d').drawImage(im,0,0,c.width,c.height);
+      tmpImg=c.toDataURL('image/jpeg',0.7);
+      $('#pprev').innerHTML='<img class="pimg" src="'+tmpImg+'">';const st=$('#pst');if(st)st.textContent='✓ تم اختيار الصورة. اضغط «إضافة المنتج» أو «حفظ التعديل» لتثبيتها.'};
+    im.onerror=()=>msg('تعذّرت قراءة الصورة.');
+    im.src=rd.result};
+  rd.readAsDataURL(f);
+}
+/* ---------- cloud sync (db) ---------- */
+let CL=null,pt=null,last={},q=Promise.resolve();
+const setSync=t=>{const e=$('#sync');if(e)e.textContent=t};
+const docsOf=()=>{const m={meta:{shop:S.shop}};S.p.forEach(x=>m['p_'+x.id]=x);S.s.forEach(x=>m['s_'+x.id]=x);S.d.forEach(x=>m['d_'+x.id]=x);return m};
+function push(){
+  if(!CL)return;
+  q=q.then(async()=>{
+    try{
+      const cur=docsOf();
+      for(const k in cur){const j=JSON.stringify(cur[k]);if(last[k]!==j){await CL.doc(k).set(cur[k]);last[k]=j}}
+      for(const k of Object.keys(last)){if(!(k in cur)){await CL.doc(k).delete();delete last[k]}}
+      setSync('✓ محفوظ على الإنترنت');
+    }catch(e){setSync('تعذّر الحفظ على الإنترنت (البيانات محفوظة في هذا المتصفح)')}
+  });
+}
+async function initCloud(){
+  try{
+    if(navigator.storage&&navigator.storage.persist)navigator.storage.persist();
+    if(!window.claude||!claude.use){setSync('البيانات محفوظة داخل التطبيق على هذا الهاتف');return}
+    const db=await claude.use('db'),user=await claude.use('user');
+    const uid=user&&await user.id();
+    if(!db||!uid){setSync('البيانات محفوظة في هذا المتصفح فقط (سجّل الدخول إلى Claude للحفظ على الإنترنت)');return}
+    const col=db.collection('data/users/'+uid);
+    const snap=await Promise.race([col.get(),new Promise((_,r)=>setTimeout(()=>r(new Error('t')),10000))]);
+    if(snap.empty){CL=col;last={};push();return}
+    const n={shop:S.shop,p:[],s:[],d:[]};last={};
+    snap.docs.forEach(d=>{const o=d.data(),id=d.id;if(!o)return;last[id]=JSON.stringify(o);
+      if(id==='meta'){if(o.shop)n.shop=o.shop}else if(id[0]==='p')n.p.push(o);else if(id[0]==='s')n.s.push(o);else if(id[0]==='d')n.d.push(o)});
+    const nw=(a,b)=>(b.id>a.id)-(b.id<a.id);
+    n.p.sort(nw);n.s.sort(nw);n.d.sort(nw);
+    S=n;CL=col;
+    try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}
+    render();setSync('✓ محفوظ على الإنترنت');
+  }catch(e){CL=null;setSync('تعذّر الاتصال بقاعدة البيانات، البيانات محفوظة في هذا المتصفح')}
+}
+function askDelSale(id){
+  const s=S.s.find(x=>x.id===id);if(!s)return;
+  $('#box').innerHTML=`<b>حذف عملية البيع؟</b>
+<p>${esc(s.name)} × ${s.qty} — ${n(s.sell*s.qty)} د.ج<br>${s.date}${s.time?' — '+s.time:''}</p>
+<p class="lbl">سيُحذف هذا البيع من السجل ويُعاد حساب الربح. هل تريد إرجاع الكمية إلى المخزون؟</p>
+<div class="acts" style="flex-direction:column;align-items:stretch">
+<button class="dng" onclick="delSale('${id}',true)">حذف وإرجاع الكمية للمخزون</button>
+<button class="dng" onclick="delSale('${id}',false)">حذف فقط (بدون تغيير المخزون)</button>
+<button class="sec" onclick="$('#ov').classList.remove('show')">تراجع</button></div>`;
+  $('#ov').classList.add('show');
+}
+function delSale(id,back){
+  const s=S.s.find(x=>x.id===id);
+  if(s&&back){const p=S.p.find(x=>x.id===s.pid);if(p)p.qty+=s.qty}
+  S.s=S.s.filter(x=>x.id!==id);save();$('#ov').classList.remove('show');render();
+}
+function zoomImg(id){
+  const p=S.p.find(x=>x.id===id);if(!p||!p.img)return;
+  $('#box').innerHTML=`<img src="${p.img}" style="width:100%;border-radius:12px"><p><b>${esc(p.name)}</b><br>${n(p.sell)} د.ج</p><div class="acts"><button class="sec" onclick="$('#ov').classList.remove('show')">إغلاق</button></div>`;
+  $('#ov').classList.add('show');
+}
+function dlBackup(){
+  const b=new Blob([JSON.stringify(S)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);
+  a.download='shop-backup-'+new Date().toISOString().slice(0,10)+'.json';
+  document.body.appendChild(a);a.click();a.remove();
+}
+function loadFile(inp){
+  const f=inp.files&&inp.files[0];if(!f)return;const r=new FileReader();
+  r.onload=()=>{try{const o=JSON.parse(r.result);if(!o||!Array.isArray(o.p))throw 0;
+    S=Object.assign({shop:'محلي',p:[],s:[],d:[]},o);S.p.forEach(p=>{if(!p.code)p.code=nextCode()});save();msg('تم الاسترجاع من الملف.');render()}catch(e){msg('الملف غير صالح.')}};
+  r.readAsText(f);
 }
 /* ---------- delivery stats ---------- */
 const age=d=>{let t=d.ts;if(!t){const m=String(d.date).split('/');t=new Date(m[2],m[1]-1,m[0]).getTime()}return Math.floor((Date.now()-t)/864e5)};
@@ -276,7 +372,7 @@ function drawL(id){
   $('#plist').innerHTML=Array(c).fill(`<div class="lb"><small>${esc(S.shop)}</small><span>${esc(p.name)}</span><strong>${n(p.sell)} د.ج</strong><svg class="bc"></svg></div>`).join('');
   document.querySelectorAll('#plist .bc').forEach(s=>{try{JsBarcode(s,String(p.code),{format:'CODE128',height:30,width:1.5,displayValue:true,fontSize:11,margin:0})}catch(e){}})
 }
-S.p.forEach(p=>{if(!p.code)p.code=nextCode()});save();render();
+S.p.forEach(p=>{if(!p.code)p.code=nextCode()});save();render();initCloud();
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
 </script>
 </body>
