@@ -132,7 +132,7 @@ const tm=()=>new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-dig
 const ST={pend:'بانتظار التأكيد',conf:'مؤكد',new:'جاهز للإرسال',sent:'تم الإرسال',way:'في الطريق',del:'تم التسليم',cnl:'ملغى',ret:'مرتجع'};
 const COS=['Yalidine','ZR Express','Maystro','Procolis','Ecotrack','أخرى'];
 let tab='home',filt='all',editId=null,arm=null;
-const msg=t=>{$('#msg').textContent=t||''};
+const msg=t=>{const m=$('#msg');m.textContent=t||'';m.style.color=/✓|^تم/.test(t||'')?'var(--good)':''};
 const pf=(b,s,q)=>(s-b)*q;
 const profTag=(b,s)=>{const d=s-b;return `<span class="tag ${d<0?'bad':''}">${d<0?'خسارة':'ربح'} ${n(Math.abs(d))} د.ج</span>`};
 
