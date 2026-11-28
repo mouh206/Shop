@@ -651,7 +651,7 @@ function saveWeb(){try{localStorage.setItem('shop_web',JSON.stringify({url:v('wu
 async function testWeb(){
   saveWeb();const c=wcfg();if(!c){msg('املأ الحقول الأربعة.');return}
   msg('جارٍ الاختبار...');
-  try{const r=await wapi(c,'products?select=code&limit=1');msg(r.ok?'الاتصال ناجح ✓':'رد غير متوقع: '+r.status)}
+  try{const r=await wapi(c,'products?select=code&limit=1');if(r.ok)msg('الاتصال ناجح ✓');else{const t=await r.text().catch(()=>'');msg('رد غير متوقع: '+r.status+' '+t.slice(0,160))}}
   catch(e){msg('فشل الاتصال: '+e.message)}
 }
 const _fsh2=forms.ship;
