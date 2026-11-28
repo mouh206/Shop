@@ -595,7 +595,7 @@ forms.set=()=>'';
 /* ---------- web store sync (Supabase) ---------- */
 const wcfg=()=>{try{const c=JSON.parse(localStorage.getItem('shop_web')||'null');return c&&c.url&&c.key&&c.email&&c.pw?c:null}catch(e){return null}};
 let wtok=null,wbusy=false,wlast='';
-const wbase=c=>c.url.trim().replace(/\/+$/,'');
+const wbase=c=>c.url.trim().replace(/\/+$/,'').replace(/\/(rest|auth)\/v1$/,'');
 const wmsg=m=>/invalid login/i.test(m)?'الإيميل أو كلمة السر غير صحيحين، أو المستخدم غير موجود في Supabase (Invalid login credentials)':/not confirmed/i.test(m)?'المستخدم غير مُؤكّد في Supabase. أنشئه بخيار Auto Confirm أو أكّده (Email not confirmed)':/api key|apikey/i.test(m)?'المفتاح العام غير صحيح (Invalid API key)':/failed to fetch|network|unexpected token|json/i.test(m)?'تعذّر الوصول إلى رابط المشروع. تأكد أنه Project URL مثل https://xxxx.supabase.co وليس رابط لوحة التحكم':m;
 async function wlogin(c){
   let r;try{r=await fetch(wbase(c)+'/auth/v1/token?grant_type=password',{method:'POST',headers:{apikey:c.key,'Content-Type':'application/json'},body:JSON.stringify({email:c.email,password:c.pw})})}catch(e){throw new Error(wmsg(e.message))}
